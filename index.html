@@ -59,24 +59,14 @@
   .btn{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:.06em;text-transform:uppercase;padding:13px 22px;text-decoration:none;border:1px solid var(--fg)}
   .btn.solid{background:var(--purple);border-color:var(--purple);color:#0A0E13}
 
-  /* timing tower */
-  .tower{background:var(--panel);border:1px solid var(--line);min-width:0}
-  .tower header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap}
-  .tower header strong{font-family:var(--display);font-size:18px;letter-spacing:.05em;text-transform:uppercase}
-  .tbl{overflow-x:auto}
-  table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
-  th{font-weight:400;color:var(--mute);font-size:10.5px;letter-spacing:.1em;text-align:right;padding:8px 12px;border-bottom:1px solid var(--line)}
-  th:nth-child(-n+2){text-align:left}
-  td{padding:9px 12px;text-align:right;border-bottom:1px solid #161D26;white-space:nowrap}
-  td:nth-child(-n+2){text-align:left}
-  td.pos{color:var(--mute);width:2.5em}
-  td.drv b{font-weight:600;color:var(--fg)}
-  td.drv small{color:var(--mute);margin-left:8px}
-  tr.live td{background:rgba(178,102,255,.07)}
-  tr.live td.pos{color:var(--purple)}
-  .legend{display:flex;gap:18px;padding:12px 16px;flex-wrap:wrap}
-  .legend span{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11px;color:var(--mute)}
-  .legend i{width:10px;height:10px;display:inline-block}
+  /* photography: full-bleed inside a hairline frame, with a mono caption strip like a monitor label */
+  .shot{margin:0;border:1px solid var(--line);background:var(--panel);min-width:0}
+  .shot img{display:block;width:100%;height:100%;object-fit:cover}
+  .shot figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+  .hero .shot .frame{height:clamp(380px,44vw,620px);overflow:hidden}
+  .hero .shot img{object-position:50% 62%}
+  .banner{aspect-ratio:21/8;max-width:100%;overflow:hidden;margin-bottom:0}
+  .banner img{object-position:50% 45%}
 
   /* ticker */
   .ticker{border-block:1px solid var(--line);overflow:hidden;background:#070A0E}
@@ -92,14 +82,10 @@
   /* telemetry */
   .telem{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
   .telem > div{background:var(--panel);padding:20px;min-width:0}
-  .telem svg{width:100%;height:auto;display:block}
-  .telem .notes ol{list-style:none;display:grid;gap:18px;margin-top:16px}
+    .telem .notes ol{list-style:none;display:grid;gap:18px;margin-top:16px}
   .telem .notes li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;font-size:15px;color:#B4BECA}
   .telem .notes li span{font-family:var(--mono);color:var(--purple);font-size:13px;padding-top:2px}
   .telem .notes li b{color:var(--fg);font-weight:600;display:block}
-  .keys{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}
-  .keys span{font-family:var(--mono);font-size:11px;color:var(--mute);display:flex;align-items:center;gap:8px}
-  .keys i{width:18px;height:2px;display:inline-block}
 
   /* rigs */
   .rigs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
@@ -185,44 +171,22 @@
     </div>
   </div>
 
-  <div class="tower">
-    <header>
-      <strong>Tuesday League · Rd 7</strong>
-      <span class="lbl">Road Atlanta · GT3 · Lap 11/18</span>
-    </header>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>Pos</th><th>Driver</th><th>S1</th><th>S2</th><th>S3</th><th>Last</th><th>Gap</th></tr></thead>
-        <tbody id="tower">
-          <tr><td class="pos">1</td><td class="drv"><b>M. Okafor</b><small>#17</small></td><td class="p">24.812</td><td class="gr">35.104</td><td class="y">26.377</td><td>1:26.293</td><td>—</td></tr>
-          <tr><td class="pos">2</td><td class="drv"><b>D. Lindqvist</b><small>#4</small></td><td class="y">24.951</td><td class="p">34.987</td><td class="gr">26.402</td><td>1:26.340</td><td>+0.611</td></tr>
-          <tr class="live"><td class="pos">3</td><td class="drv"><b>R. Castillo</b><small>#88</small></td><td class="gr">24.870</td><td class="gr">35.066</td><td class="p">26.118</td><td class="p">1:26.054</td><td>+1.204</td></tr>
-          <tr><td class="pos">4</td><td class="drv"><b>J. Whitfield</b><small>#22</small></td><td class="y">25.130</td><td class="y">35.422</td><td class="gr">26.519</td><td>1:27.071</td><td>+3.880</td></tr>
-          <tr><td class="pos">5</td><td class="drv"><b>A. Brennan</b><small>#9</small></td><td class="gr">24.990</td><td class="y">35.611</td><td class="y">26.904</td><td>1:27.505</td><td>+6.022</td></tr>
-          <tr><td class="pos">6</td><td class="drv"><b>T. Nakamura</b><small>#51</small></td><td class="y">25.204</td><td class="gr">35.390</td><td class="y">27.011</td><td>1:27.605</td><td>+9.417</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="legend">
-      <span><i style="background:var(--purple)"></i>Fastest overall</span>
-      <span><i style="background:var(--green)"></i>Personal best</span>
-      <span><i style="background:var(--yellow)"></i>Off PB</span>
-    </div>
-  </div>
+  <figure class="shot">
+    <div class="frame"><img src="img/hero.jpg" alt="Driver in a motion-platform racing simulator with multiple screens" width="1800" height="3200"></div>
+    <figcaption><span>Pro rig · 3-DOF motion</span><span>Bay 2</span></figcaption>
+  </figure>
 </div>
 
 <div class="ticker" aria-hidden="true">
   <div>
-    <span>LAP RECORD · Road Atlanta GT3 · <b>1:25.871</b> R. Castillo</span>
-    <span>LAP RECORD · Charlotte Roval GT4 · <b>1:44.302</b> M. Okafor</span>
-    <span>LAP RECORD · Watkins Glen LMP2 · <b>1:33.960</b> D. Lindqvist</span>
-    <span>NEXT LEAGUE NIGHT · Tue 21 Oct · 7:00 PM · Sebring 12h short</span>
-    <span>COACH ON SITE · Wed–Sat · 2 PM–10 PM</span>
-    <span>LAP RECORD · Road Atlanta GT3 · <b>1:25.871</b> R. Castillo</span>
-    <span>LAP RECORD · Charlotte Roval GT4 · <b>1:44.302</b> M. Okafor</span>
-    <span>LAP RECORD · Watkins Glen LMP2 · <b>1:33.960</b> D. Lindqvist</span>
-    <span>NEXT LEAGUE NIGHT · Tue 21 Oct · 7:00 PM · Sebring 12h short</span>
-    <span>COACH ON SITE · Wed–Sat · 2 PM–10 PM</span>
+    <span>NEXT LEAGUE NIGHT · <b>Tue 21 Oct · 7:00 PM</b></span>
+    <span>COACH ON SITE · <b>Wed–Sat · 2 PM–10 PM</b></span>
+    <span>TRACK DAY PREP · <b>VIR · Roebling · CMP</b></span>
+    <span>GIFT CARDS · <b>Any amount, at the front desk</b></span>
+    <span>NEXT LEAGUE NIGHT · <b>Tue 21 Oct · 7:00 PM</b></span>
+    <span>COACH ON SITE · <b>Wed–Sat · 2 PM–10 PM</b></span>
+    <span>TRACK DAY PREP · <b>VIR · Roebling · CMP</b></span>
+    <span>GIFT CARDS · <b>Any amount, at the front desk</b></span>
   </div>
 </div>
 
@@ -233,18 +197,10 @@
     <p>Your coach overlays your fastest lap against a reference lap and walks you through the gap, corner by corner. You leave with the report and the raw data file.</p>
   </div>
   <div class="telem">
-    <div>
-      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-        <span class="lbl">Speed trace · Turns 10a–12 · Road Atlanta</span>
-        <span class="mono" style="font-size:12px;color:var(--mute)">Δ <span class="y">+0.284s</span> through sector 3</span>
-      </div>
-      <svg id="trace" viewBox="0 0 640 280" role="img" aria-label="Speed trace comparing a student lap to a reference lap through turns 10a to 12"></svg>
-      <div class="keys">
-        <span><i style="background:var(--purple)"></i>Reference · coach</span>
-        <span><i style="background:var(--yellow)"></i>You · lap 14</span>
-        <span><i style="background:var(--flag);height:8px;opacity:.35"></i>Time lost</span>
-      </div>
-    </div>
+    <figure class="shot" style="border:0;padding:0">
+      <div style="aspect-ratio:3/2;overflow:hidden"><img src="img/coaching.jpg" alt="Driver on a simulator rig with a triple-screen setup during a coached session" width="1800" height="1200"></div>
+      <figcaption><span>Coached session · Pro rig</span><span>Report sent same day</span></figcaption>
+    </figure>
     <div class="notes">
       <span class="lbl">Coach's notes</span>
       <ol>
@@ -262,6 +218,7 @@
     <h2>Three rig classes.</h2>
     <p>All rigs run on aluminium profile chassis bolted to the slab. Nothing flexes when you stand on the brake.</p>
   </div>
+  <figure class="shot banner"><img src="img/wheel.jpg" alt="Close-up of a direct-drive sim wheel rim with paddle shifters and rotary switches" width="1800" height="1200"></figure>
   <div class="rigs">
     <div class="rig">
       <h3>Club</h3>
@@ -341,43 +298,6 @@
 </footer>
 
 <script>
-  // speed trace (deterministic)
-  (function(){
-    const svg=document.getElementById('trace'), W=640,H=280,pad={l:40,r:10,t:16,b:30};
-    const ns='http://www.w3.org/2000/svg';
-    const el=(t,a)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);svg.appendChild(e);return e};
-    const ref=x=>{ // mph along distance 0..1
-      const dips=[[.18,.07,56],[.42,.06,40],[.78,.09,48]];
-      let v=128; dips.forEach(([c,w,d])=>{v-=d*Math.exp(-((x-c)**2)/(2*w*w))});
-      return v;
-    };
-    const you=x=>{
-      const dips=[[.17,.075,58],[.415,.07,46],[.79,.11,51]];
-      let v=126; dips.forEach(([c,w,d])=>{v-=d*Math.exp(-((x-c)**2)/(2*w*w))});
-      return v;
-    };
-    const vmin=60,vmax=135;
-    const X=x=>pad.l+x*(W-pad.l-pad.r), Y=v=>pad.t+(1-(v-vmin)/(vmax-vmin))*(H-pad.t-pad.b);
-    [70,90,110,130].forEach(v=>{
-      el('line',{x1:pad.l,x2:W-pad.r,y1:Y(v),y2:Y(v),stroke:'#1E2731','stroke-width':1});
-      const t=el('text',{x:pad.l-8,y:Y(v)+4,'text-anchor':'end',fill:'#7C8897','font-size':10,'font-family':'JetBrains Mono, monospace'});t.textContent=v;
-    });
-    [['T10a',.17],['T10b',.42],['T12',.78]].forEach(([n,x])=>{
-      el('line',{x1:X(x),x2:X(x),y1:pad.t,y2:H-pad.b,stroke:'#1E2731','stroke-dasharray':'3 4'});
-      const t=el('text',{x:X(x),y:H-10,'text-anchor':'middle',fill:'#7C8897','font-size':10,'font-family':'JetBrains Mono, monospace'});t.textContent=n;
-    });
-    const N=160; let a='',b='',fill='';
-    const pts=[];
-    for(let i=0;i<=N;i++){const x=i/N;pts.push([X(x),Y(ref(x)),Y(you(x))]);}
-    a=pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
-    b=pts.map(p=>p[0].toFixed(1)+','+p[2].toFixed(1)).join(' ');
-    fill=pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')+' '+pts.slice().reverse().map(p=>p[0].toFixed(1)+','+p[2].toFixed(1)).join(' ');
-    el('polygon',{points:fill,fill:'#FF4A3D','fill-opacity':.16});
-    el('polyline',{points:a,fill:'none',stroke:'#B266FF','stroke-width':2});
-    el('polyline',{points:b,fill:'none',stroke:'#F0C232','stroke-width':2});
-    const u=el('text',{x:pad.l,y:10,fill:'#7C8897','font-size':10,'font-family':'JetBrains Mono, monospace'});u.textContent='MPH';
-  })();
-
   // booking grid
   (function(){
     const hours=['2P','3P','4P','5P','6P','7P','8P','9P'];

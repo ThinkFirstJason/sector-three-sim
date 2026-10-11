@@ -6,5 +6,6 @@ Website mockup for a fictional performance sim racing lab in Mooresville, NC. St
 
 - Single static `index.html`, no build step
 - Design language for reuse: [DESIGN.md](DESIGN.md)
+- Photos from [Unsplash](https://unsplash.com) (Unsplash License)
 
 Fictional business. Names, addresses and phone numbers are made up.
